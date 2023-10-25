@@ -1,0 +1,10 @@
+import React from 'react';
+import './style.css';
+
+export default function App() {
+  const database = [
+    { title: '애니메이션', images: ['./back.png', './back.png', './back.png'] },
+  ];
+
+  return <div></div>;
+}

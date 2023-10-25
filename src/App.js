@@ -1,5 +1,6 @@
 import React from 'react';
 import './style.css';
+import { useState } from 'react';
 
 import A1 from './AppBasic01';
 import A2 from './AppBasic02';
@@ -13,9 +14,41 @@ import A9 from './AppBasic09';
 import A10 from './AppDemo';
 
 export default function App() {
+  const database = [
+    { title: '애니메이션', images: ['./back.png', './back.png', './back.png'] },
+  ];
+
   return (
     <div>
-      <A10 /> <br />
+      {database.map((x) => (
+        <ImageView title={x.title} images={x.images} />
+      ))}
     </div>
   );
 }
+
+const ImageView = ({ title, images }) => {
+  return (
+    <div>
+      <div>{title}</div>
+      {images.map((x) => (
+        <ImageCss src={x} />
+      ))}
+    </div>
+  );
+};
+
+const ImageCss = ({ src }) => {
+  const [num, setNum] = useState(1);
+  console.log(src);
+  return (
+    <span>
+      <img
+        src={src}
+        alt="nono"
+        onClick={() => setNum(num * -1)}
+        style={{ filter: num > 0 ? blur('5px') : blur('0') }}
+      />
+    </span>
+  );
+};
